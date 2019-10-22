@@ -23,17 +23,6 @@
   tags: prepare
   when: floating_ip_pool != 'None'
 
-- name: Wait for ssh-server to start
-  local_action:
-    module: wait_for
-      host="{{ hostvars[inventory_hostname].openstack.private_v4 }}"
-      port=22
-      search_regex=OpenSSH
-      delay=3
-      timeout=300
-  tags: prepare
-  when: floating_ip_pool == 'None'
-
 - name: install Python 2 if missing
   raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal)
   delay: 10
