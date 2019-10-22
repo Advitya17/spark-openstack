@@ -1,3 +1,39 @@
+# Instructions to set up on cloudlab
+1. Spawn open-stack on cloudlab. Use Mitaka relase. (Other newer release might work as well. Need to confirm)
+2. Add an image called "ubuntu-16.04" on openstack web ui. Image Url: http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img
+3. (optional) Add favor "spark.large" on openstack. Choose your hardware specs.
+4. Create a security key pair or upload yours. Use the security key to spin up a management node called "mgt-node". For the network, select "flat-lan-1-net" at first, and then manually associate a floating IP to it.
+5. Upload private key to "mgt-node"
+6. ssh into the management node and resolve some dependency issues.
+    * sudo apt-get update
+    * sudo apt-get install libffi-dev libssl-dev python-dev
+    * sudo apt-get install python-pip
+    * pip install --upgrade six ansible shade
+7. Clone this repo. Modify admin-openrc.sh file. Replace **URL**, **project id** and **password**. run "source admin-openrc.sh"
+8. Modify /etc/hosts. Add "mgt-node" to 127.0.01 line. And add DNS for the ctl node as well (ping it if you don't know the IP). For example, here is a snapshot of /etc/hosts:
+    * 127.0.0.1 localhost mgt-node
+    * 128.105.145.101 ctl
+    * ..... (other entries like ipv6)
+9. run "./spark-openstack --create --deploy-spark -k **your-private-key-name** -i **your-private-key** -s 3 -n flat-lan-1-net -t spark.large -m spark.large -a ubuntu-16.04 --spark-version 2.3.0 launch **your-project-name**". 
+11. Manually assoicate a floating ip to master node.
+10. ssh into each master and slave node to modify /etc/hosts file. (This should be a bug. I need to fix it later). Here is what you will see:
+    * 127.0.0.1 localhost
+    * ....some other stuff
+    * my-project-name-master
+    * my-project-name-slave-3
+    * my-project-name-slave-2
+    * my-project-name-slave-1
+
+    All of nodes have missing IPs. So find out their IPs on openstack UI, and put them here.
+11. Start your spark and hadoop cluster by running "./usr/local/spark/sbin/start-all.sh" and "./usr/local/hadoop/sbin/start-all.sh" on master node. Check if everything works by openning http://master-ip:8080, the web UI for spark.
+
+## TODOs:
+1. Test whether this set of scripts work on newer release of openstack on cloudlab.
+2. Upgrade to Python 3.
+3. Resolve hosts issue. IPs should be automatically filled for all master and slave nodes.
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
 # Spark cluster deploy tools for Openstack
 
 This project provides scripts for Apache Spark cluster autodeploy in any Openstack environment with optional useful tools:
