@@ -24,13 +24,13 @@
   - spark_install
 
 # it would be reasonable to use sha1 for crossplatform, but Spark doesn't provide sha1 checksum.
-- name: extract Spark distro checksum from file
-  set_fact: spark_md5="{{ lookup('file', spark_arch_checksum) | regex_replace('.*tgz:(.*)', '\\1' ) |  replace(' ', '') }}"
-  tags:
-  - install
-  - spark_install
+#- name: extract Spark distro checksum from file
+#  set_fact: spark_md5="{{ lookup('file', spark_arch_checksum) | regex_replace('.*tgz:(.*)', '\\1' ) |  replace(' ', '') }}"
+#  tags:
+#  - install
+#  - spark_install
 
-- debug: var=spark_md5
+#- debug: var=spark_md5
 
 - include: tasks/prepare_spark.yml
   become: yes

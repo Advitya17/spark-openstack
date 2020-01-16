@@ -37,7 +37,7 @@
 
 - name: get Spark distro
   become: no
-  local_action: get_url url={{ spark_download_url }} dest=files/ checksum="md5:{{ spark_md5 }}"
+  local_action: get_url url={{ spark_download_url }} dest=files/
 
 #- name: put spark distro to master
 #  copy: src={{ spark_arch }} dest=/opt/
@@ -47,7 +47,7 @@
   synchronize:
     src: "files/{{ spark_file }}.tgz"
     dest: "/opt/{{ spark_file }}.tgz"
-    checksum: yes
+    checksum: no
 #  delegate_to: "{{ active_master_inventory_hostname }}"
 
 - name: unzip spark

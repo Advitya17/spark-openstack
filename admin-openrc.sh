@@ -15,7 +15,7 @@ export OS_AUTH_URL=http://ctl.groupml.orion-pg0.wisc.cloudlab.us:5000/v3
 
 # With the addition of Keystone we have standardized on the term **project**
 # as the entity that owns the resources.
-export OS_PROJECT_ID=3e2716eaf490466aac60f5e81e8587d6
+export OS_PROJECT_ID=ec14cd81bd544ab5a7c5378624d89549
 export OS_PROJECT_NAME="admin"
 export OS_USER_DOMAIN_NAME="default"
 if [ -z "$OS_USER_DOMAIN_NAME" ]; then unset OS_USER_DOMAIN_NAME; fi
@@ -29,7 +29,7 @@ unset OS_TENANT_NAME
 export OS_USERNAME="admin"
 
 # With Keystone you pass the keystone password.
-export OS_PASSWORD="9f7be4a649de"
+export OS_PASSWORD="d29691903c8c"
 
 # If your configuration has multiple regions, we set that information here.
 # OS_REGION_NAME is optional and only valid in certain environments.

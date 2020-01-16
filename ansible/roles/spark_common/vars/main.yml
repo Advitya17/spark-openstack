@@ -47,7 +47,7 @@ hadoop_vars:
 
 
 spark_download_url: "{{ spark_download_base_url }}spark-{{ spark_version }}/spark-{{ spark_version }}-bin-{{ hadoop_vars[hadoop_version]['suffix'] }}.tgz"
-spark_checksum_url: "{{ spark_download_url }}.md5"
+spark_checksum_url: "{{ spark_download_url }}.sha512"
 spark_arch: "files/spark-{{ spark_version }}-bin-{{ hadoop_vars[hadoop_version]['suffix'] }}.tgz"
 spark_arch_checksum: "{{ spark_arch }}.md5"
 spark_file: "spark-{{ spark_version }}-bin-{{ hadoop_vars[hadoop_version]['suffix'] }}"

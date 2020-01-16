@@ -16,7 +16,7 @@ import urlparse
 
 spark_versions = \
     {
-        "2.4.4": {"hadoop_versions": ["2.7", "3.1"]},
+        "2.4.4": {"hadoop_versions": ["2.7","3.0", "3.1"]},
         "2.3.0": {"hadoop_versions": ["2.6", "2.7"]},
         "2.2.1": {"hadoop_versions": ["2.6", "2.7"]},
         "2.2.0": {"hadoop_versions": ["2.6", "2.7"]},
