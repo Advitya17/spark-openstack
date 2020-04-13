@@ -9,6 +9,7 @@
     * sudo apt-get install libffi-dev libssl-dev python-dev
     * sudo apt-get install python-pip
     * pip install --upgrade six ansible shade
+    * pip install openstacksdk==0.39 (optional, install it if you encounter any openstacksdk missing error later)
 7. Clone this repo. Modify admin-openrc.sh file. Replace **URL**, **project id** and **password**. run "source admin-openrc.sh"
 8. Modify /etc/hosts. Add "mgt-node" to 127.0.01 line. And add DNS for the ctl node as well (ping it if you don't know the IP). For example, here is a snapshot of /etc/hosts:
     * 127.0.0.1 localhost mgt-node
