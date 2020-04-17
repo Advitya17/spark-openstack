@@ -1,5 +1,5 @@
 # Instructions to set up on cloudlab
-1. Spawn open-stack on cloudlab. Use Mitaka relase. (Other newer release might work as well. Need to confirm)
+1. Spawn open-stack on cloudlab. Use Mitaka relase. (Stein release won't work as it doesn't support adding images via a URL. Need to confirm if other newer release may work.)
 2. Add an image called "ubuntu-16.04" on openstack web ui. Image Url: http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img
 3. (optional) Add favor "spark.large" on openstack. Choose your hardware specs.
 4. Create a security key pair or upload yours. Use the security key to spin up a management node called "mgt-node". For the network, select "flat-lan-1-net" at first, and then manually associate a floating IP to it.
